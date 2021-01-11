@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { Layout } from 'antd';
+import styled from 'styled-components';
+import SiderMenu from './components/connections/SiderMenuConnect';
+import ContentPage from './components/connections/ContentPageConnect';
+
+const { Footer, Sider, Content } = Layout;
+
+const FixedFooter = styled(Footer)`
+    bottom: 0;
+    height: 10vh;
+    background-color: red;
+    position: fixed;
+    width: 100vw;
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Layout>
+            <Sider
+                style={{ height: '100vh' }}
+                theme="light"
+            >
+                <SiderMenu />
+            </Sider>
+            <Layout>
+                <Content>
+                    <ContentPage />
+                </Content>
+                <FixedFooter>
+                    Footer
+                </FixedFooter>
+            </Layout>
+        </Layout>
+    );
 }
 
 export default App;
